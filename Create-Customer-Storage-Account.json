@@ -1,0 +1,62 @@
+{
+  "$schema" : "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion" : "1.0.0.0",
+    "parameters": {
+        "topLevelAggregator": {
+            "defaultValue": "tla",
+            "type": "string"
+        },
+        "thirdOctectNumber": { 
+            "defaultValue": "0",
+            "type": "string"
+        },
+        "resourceLocation": {
+        	"defaultValue": "null",
+            "type": "string"
+        },
+        "environment": {
+        	"defaultValue": "null",
+            "type": "string"
+        }
+    },
+  "variables" : {
+    "resourceTypeAccount" : "st",
+    "resourceTypeBlob" : "stbl",
+    "storageAccount": "[concat(variables('resourceTypeAccount'),parameters('topLevelAggregator'),parameters('environment'),parameters('resourceLocation'))]",
+    "storageBlob": "[concat(variables('resourceTypeBlob'),'-',parameters('topLevelAggregator'),'-',parameters('environment'),'-',parameters('resourceLocation'),'-','001')]",
+    "storageContainer": "diagnostics",
+    "storageSkuName": "Standard_RAGRS",
+    "storageSkuTier": "Standard",
+    "storageKind": "StorageV2",
+    "storageAccessTier": "Hot"
+  },
+
+  "resources": [
+        {
+            "name": "[variables('storageAccount')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
+            "location": "[parameters('resourceLocation')]",
+            "kind": "[variables('storageKind')]",
+            "sku": {
+                "name": "[variables('storageSkuName')]",
+                "tier": "[variables('storageSkuTier')]"
+            },
+            "properties": {
+                "accessTier": "Hot"
+            },
+            "resources": [
+                {
+                    "name": "[concat('default/', variables('storageContainer'))]",
+                    "type": "blobServices/containers",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageAccount')]"
+                    ]
+                }
+            ]
+        }
+    ],
+  
+  "outputs" : {}
+}
