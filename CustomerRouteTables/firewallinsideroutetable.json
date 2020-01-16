@@ -29,23 +29,28 @@
         },
         {
           "addressPrefix": "212.97.64.64/28",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-activedirectorysubnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA1-LCI-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
         {
           "addressPrefix": "212.97.64.80/28",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-automationsubnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA2-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
         {
           "addressPrefix": "212.97.64.96/28",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-automationsubnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA3-subnet')]",
+          "nextHopType": "VirtualAppliance",
+          "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
+        },
+                  {
+          "addressPrefix": "212.97.64.112/29",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-tranit-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         }
-
       ]
     },	
     "resources": [
