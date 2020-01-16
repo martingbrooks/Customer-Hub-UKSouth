@@ -21,18 +21,13 @@
   },
   "variables": {
     "resourceGroups": [
-      "[concat('rg-',parameters('topLevelAggregator'),'-activedirectory-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-adsync-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-pkisub-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-rdsgateway-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-rdsbroker-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-rdssession-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-storage-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-monitorautomation-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-firewall-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-keyvault-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-lmcollector-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]"
+      "[concat('rg-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-tpa1-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-tpa2-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-tpa3-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
     ]
   },
   "resources": [
