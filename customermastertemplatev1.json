@@ -20,7 +20,7 @@
         }
     },
   "variables": {
-    "templateLocation": "https://raw.githubusercontent.com/Rob1e/Control-Hub/master/",
+    "templateLocation": "https://raw.githubusercontent.com/martingbrooks/Customer1-UKSouth/master/",
     "resourceGroupTemplate": "[concat(variables('templateLocation'),'Create-Customer-Resource-Groups.json')]",
     "routeTableTemplates": [
       {
