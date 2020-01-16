@@ -25,27 +25,27 @@
     "routeTableTemplates": [
       {
         "name": "tpa1",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/tpa1routetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/tpa1routetable.json')]"
       },
       {
         "name": "tpa2",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/tpa2routetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/tpa2routetable.json')]"
       },
       {
         "name": "tpa3",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/tpa3routetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/tpa3routetable.json')]"
       },
       {
         "name": "firewallinside",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/firewallinsideroutetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewallinsideroutetable.json')]"
       },
       {
         "name": "firewalloutside",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/firewalloutsideroutetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewalloutsideroutetable.json')]"
       },
       {
         "name": "firewalltransit",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerrouteTables/firewalltransitroutetable.json')]"
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewalltransitroutetable.json')]"
       }
     ]
   },
