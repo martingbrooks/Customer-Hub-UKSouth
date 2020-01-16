@@ -1,0 +1,62 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "topLevelAggregator": {
+            "defaultValue": "tla",
+            "type": "string"
+        },
+        "thirdOctectNumber": { 
+            "defaultValue": "0",
+            "type": "string"
+        },
+        "resourceLocation": {
+        	"defaultValue": "null",
+            "type": "string"
+        },
+        "environment": {
+        	"defaultValue": "null",
+            "type": "string"
+        }   
+    },
+    "variables": {
+      "destinationRoutes": [ 
+            {
+            "addressPrefix": "0.0.0.0/0",
+            "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-default')]",
+            "nextHopType": "VirtualAppliance",
+            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.4')]"
+            },
+            {
+            "addressPrefix": "100.64.0.0/10",
+            "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-customer')]",
+            "nextHopType": "VirtualAppliance",
+            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.4')]"
+            }    
+        ]
+    },	
+    "resources": [
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-04-01",
+            "name": "[concat('route-',parameters('topLevelAggregator'),'-rdssession-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+            "location": "[parameters('resourceLocation')]",
+            "properties": {
+                "copy": [
+                    {
+                        "name": "routes",
+                        "count": "[length(variables('destinationRoutes'))]",
+                        "input": {
+                            "name": "[variables('destinationRoutes')[copyIndex('routes')].name]",
+                            "properties": {
+                                "addressPrefix": "[variables('destinationRoutes')[copyIndex('routes')].addressPrefix]",
+                                "nextHopType": "[variables('destinationRoutes')[copyIndex('routes')].nextHopType]",
+                                "nextHopIpAddress": "[variables('destinationRoutes')[copyIndex('routes')].nextHopIpAddress]"
+                            }
+                        }
+                    }
+                ]
+            }
+    	}
+    ]
+}
