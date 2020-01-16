@@ -47,7 +47,7 @@
         },
                   {
           "addressPrefix": "212.97.64.112/29",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-tranit-subnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-transit-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         }
