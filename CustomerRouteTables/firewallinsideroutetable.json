@@ -38,6 +38,12 @@
           "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-automationsubnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
+        },
+        {
+          "addressPrefix": "212.97.64.96/28",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-automationsubnet')]",
+          "nextHopType": "VirtualAppliance",
+          "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         }
 
       ]
