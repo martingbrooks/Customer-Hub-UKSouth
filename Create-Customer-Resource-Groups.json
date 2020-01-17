@@ -21,13 +21,14 @@
   },
   "variables": {
     "resourceGroups": [
+      "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-tpa1-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-tpa2-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-tpa3-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]"
     ]
   },
   "resources": [
