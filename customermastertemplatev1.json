@@ -78,7 +78,7 @@
       "apiVersion": "2018-05-01",
       "name": "[concat('routeTablesDeployment',variables('routeTableTemplates')[copyIndex()].name)]",
       "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "resourceGroup": "[concat('rg-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "dependsOn": [ "[concat('resourceGroupDeployment',parameters('resourceLocation'))]" ],
       "copy": {
         "name": "templatesCopy",
