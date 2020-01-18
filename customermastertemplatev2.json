@@ -94,7 +94,8 @@
       "name": "pfnictransit",
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/pfnictransitnsg.json')]"
     }
-  ],
+  ]
+},
   "resources": [
     {
       "apiVersion": "2018-05-01",
