@@ -39,7 +39,7 @@
         {
             "type": "Microsoft.Network/routeTables",
             "apiVersion": "2019-04-01",
-            "name": "[concat('route-',parameters('topLevelAggregator'),'-monitorautomation-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+            "name": "[concat('route-',parameters('topLevelAggregator'),'-tpa1-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
             "location": "[parameters('resourceLocation')]",
             "properties": {
                 "copy": [
