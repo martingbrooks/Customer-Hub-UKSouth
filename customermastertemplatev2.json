@@ -59,19 +59,19 @@
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/logicmonitor.json')]"
     },
     {
-      "name": "monitorautomation",
+      "name": "jmpserver",
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/jmpserver.json')]"
     },
     {
-      "name": "services"
+      "name": "tpa1"
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa1.json')]"
     },
     {
-      "name": "rdssession",
+      "name": "tpa2",
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa2.json')]"
     },
     {
-      "name": "rdsgateway",
+      "name": "tpa3",
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa3.json')]"
     },
     {
