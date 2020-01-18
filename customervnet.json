@@ -70,7 +70,7 @@
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[concat('10.64.',parameters('thirdOctectNumber'),'.0/24')]"
+                        "[concat('10.64.',parameters('thirdOctectNumber'),'.0/25')]"
                     ]
                 },
                "copy": [
