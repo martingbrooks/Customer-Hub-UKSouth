@@ -51,7 +51,7 @@
     },
     "resources": [
         {
-            "name": "[concat('nsg-',parameters('topLevelAggregator'),'-activedirectory-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+            "name": "[concat('nsg-',parameters('topLevelAggregator'),'-logicmonitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2019-09-01",
             "location": "[parameters('resourceLocation')]",
