@@ -56,27 +56,23 @@
     },
     {
       "name": "activedirectory",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/activedirectorynsg.json')]"
+      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/logicmonitor.json')]"
     },
     {
       "name": "monitorautomation",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/monitorautomationnsg.json')]"
+      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/jmpserver.json')]"
     },
     {
-      "name": "services",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/servicesnsg.json')]"
+      "name": "services"
+      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa1.json')]"
     },
     {
       "name": "rdssession",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/rdssessionnsg.json')]"
+      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa2.json')]"
     },
     {
       "name": "rdsgateway",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/rdsgatewaynsg.json')]"
-    },
-    {
-      "name": "rdsbroker",
-      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/rdsbrokernsg.json')]"
+      "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa3.json')]"
     },
     {
       "name": "firewalloutside",

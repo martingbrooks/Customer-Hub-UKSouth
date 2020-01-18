@@ -1,0 +1,83 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "topLevelAggregator": {
+            "defaultValue": "tla",
+            "type": "string"
+        },
+        "thirdOctectNumber": { 
+            "defaultValue": "0",
+            "type": "string"
+        },
+        "resourceLocation": {
+        	"defaultValue": "null",
+            "type": "string"
+        },
+        "environment": {
+        	"defaultValue": "null",
+            "type": "string"
+        }   
+    },
+    "variables": {
+    	"securityGroupRules": [
+  			  {
+  			  	"name":"Explicit_Outbound_Deny_Any",
+                "description": "Explicit rule to block any outbound traffic",
+                "protocol": "*",
+                "access": "Deny",
+                "priority": "4000",
+                "direction": "Outbound",
+                "sourcePortRanges": ["0-65535"],
+                "destinationPortRanges": ["0-65535"],
+                "sourceAddressPrefixes": ["0.0.0.0/0"],
+                "destinationAddressPrefixes": ["0.0.0.0/0"]
+  			  },
+  			  {
+  			  	"name":"Explicit_Inbound_Deny_Any",
+                "description": "Explicit rule to block any inbound traffic",
+                "protocol": "*",
+                "access": "Deny",
+                "priority": "4000",
+                "direction": "Inbound",
+                "sourcePortRanges": ["0-65535"],
+                "destinationPortRanges": ["0-65535"],
+                "sourceAddressPrefixes": ["0.0.0.0/0"],
+                "destinationAddressPrefixes": ["0.0.0.0/0"]
+  			  }
+  		]
+    
+    },
+    "resources": [
+        {
+            "name": "[concat('nsg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "location": "[parameters('resourceLocation')]",
+            "properties": {
+                "copy": [
+                    {
+                        "name": "securityRules",
+                        "count": "[length(variables('securityGroupRules'))]",
+                        "input": {
+                            "name": "[variables('securityGroupRules')[copyIndex('securityRules')].Name]",
+                            "properties": {
+                				"description": "[variables('securityGroupRules')[copyIndex('securityRules')].description]",
+                                "protocol": "[variables('securityGroupRules')[copyIndex('securityRules')].protocol]",
+                                "access": "[variables('securityGroupRules')[copyIndex('securityRules')].access]",
+                                "priority": "[variables('securityGroupRules')[copyIndex('securityRules')].priority]",
+                                "direction": "[variables('securityGroupRules')[copyIndex('securityRules')].direction]",
+                                "sourcePortRanges": "[variables('securityGroupRules')[copyIndex('securityRules')].sourcePortRanges]",
+                                "destinationPortRanges": "[variables('securityGroupRules')[copyIndex('securityRules')].destinationPortRanges]",
+                                "sourceAddressPrefixes": "[variables('securityGroupRules')[copyIndex('securityRules')].sourceAddressPrefixes]",
+                                "destinationAddressPrefixes": "[variables('securityGroupRules')[copyIndex('securityRules')].destinationAddressPrefixes]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+	
