@@ -1,0 +1,139 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "topLevelAggregator": {
+            "defaultValue": "tla",
+            "type": "string"
+        },
+        "thirdOctectNumber": { 
+            "defaultValue": "0",
+            "type": "string"
+        },
+        "resourceLocation": {
+        	"defaultValue": "null",
+            "type": "string"
+        },
+        "environment": {
+        	"defaultValue": "null",
+            "type": "string"
+        }
+    },
+    "variables": {   
+      "virtualNetworks_externalid": "[resourceId(concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001'),'Microsoft.Network/virtualNetworks/',concat('vnet-',parameters('topLevelAggregator'),'-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",      
+      "subnetReference": [ 
+      		"[concat(variables('virtualNetworks_externalid'),'/subnets/',concat('snet-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
+      		"[concat(variables('virtualNetworks_externalid'),'/subnets/',concat('snet-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
+      		"[concat(variables('virtualNetworks_externalid'),'/subnets/',concat('snet-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
+      ],
+      "nsgResourceGroup":"[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "nsgReference": [ 
+      		"[resourceId(variables('nsgResourceGroup'), 'Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('topLevelAggregator'),'-pfoutsidenic-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
+      		"[resourceId(variables('nsgResourceGroup'), 'Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('topLevelAggregator'),'-pfinsidenic-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
+      		"[resourceId(variables('nsgResourceGroup'), 'Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('topLevelAggregator'),'-pftransitnic-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"   	
+      ],   
+      "publicIP": "[concat('pip-',parameters('topLevelAggregator'),'-fwl01-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "publicIpAddressId": {
+      		"id": "[resourceId(concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001'),'Microsoft.Network/publicIPAddresses',variables('publicIP'))]"   		
+      }, 
+      "nicNames": [
+      		"[concat('nic-0-',parameters('topLevelAggregator'),'fwl01-outside-',parameters('environment'),'-',parameters('resourceLocation'))]",
+      		"[concat('nic-1-',parameters('topLevelAggregator'),'fwl01-inside-',parameters('environment'),'-',parameters('resourceLocation'))]",
+      		"[concat('nic-2-',parameters('topLevelAggregator'),'fwl01-transit-',parameters('environment'),'-',parameters('resourceLocation'))]"
+      ],
+      "nicPriority": [
+            "True",
+            "False",
+            "False"
+      ],
+      "privateIPAddress": [
+      	"[concat('212.97.',parameters('thirdOctectNumber'),'.244')]",
+      	"[concat('212.97.',parameters('thirdOctectNumber'),'.4')]",
+      	"[concat('212.97.',parameters('thirdOctectNumber'),'.252')]"
+      ]
+    },
+    "resources": [             
+    	{
+    		"apiVersion": "2019-04-01",
+    		"type": "Microsoft.Network/networkInterfaces",
+    		"name": "[variables('nicNames')[copyIndex()]]",
+    		"location": "[parameters('resourceLocation')]",
+    		"copy": {
+    		  "name": "nicCopy",
+    		  "count": "[length(variables('nicNames'))]"  
+    		},
+    		"properties": {
+    		  "ipConfigurations": [
+    		    {
+    		      "name": "[variables('nicNames')[copyIndex('nicCopy')]]",
+    		      "properties": {
+    		        "privateIPAllocationMethod": "Static",
+    		        "privateIPAddress": "[variables('privateIPAddress')[copyIndex('nicCopy')]]",
+    		        "subnet": {
+    		          "id": "[variables('subnetReference')[copyIndex('nicCopy')]]"
+    		        },
+    		        "primary": "[variables('nicPriority')[copyIndex('nicCopy')]]",
+    		        "publicIPAddress": "[if(equals(variables('nicPriority')[copyIndex('nicCopy')],'True'), variables('publicIpAddressId'), json('null'))]"
+    		      }
+    		    }
+    		  ],
+    		"networkSecurityGroup": {
+               "id": "[variables('nsgReference')[copyIndex('nicCopy')]]"
+                }
+    		}
+    	},  
+        {
+            "name": "[concat(parameters('environment'),'-',parameters('topLevelAggregator'),'-fwl01')]",
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "location": "[parameters('resourceLocation')]",
+            "dependsOn": [
+                "nicCopy"
+            ],
+            "properties": {
+                "osProfile": {
+                    "computerName": "[concat(concat('fwl-',parameters('topLevelAggregator'),'-','gbpcohfwl01','-',parameters('environment'),'-',parameters('resourceLocation'),'-','001'))]",
+                    "adminUsername": "pfsense",
+                    "adminPassword": "Ch4ng3me!"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_B2s"
+                },
+                 "storageProfile": {
+                    "imageReference": {
+                        "publisher": "netgate",
+                        "offer": "netgate-pfsense-azure-fw-vpn-router",
+                        "sku": "netgate-pfsense-azure-243",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                        }
+                    },
+                    "dataDisks": []
+                },
+       			"networkProfile": {
+       			  "copy": [
+       			    {
+       			      "name": "networkInterfaces",
+       			      "count": "[length(variables('nicNames'))]",
+       			      "input": {
+       			        "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicNames')[copyIndex('networkInterfaces')])]",
+       			        "properties": {
+       			          "primary": "[variables('nicPriority')[copyIndex('networkInterfaces')]]"
+       			        }
+       			      }
+       			    }
+       			  ]
+       			}
+            	},
+       			"plan": {
+       			    "name": "netgate-pfsense-azure-243",
+       			    "product": "netgate-pfsense-azure-fw-vpn-router",
+       			    "publisher": "netgate"
+       			}
+		}            
+    ]
+}
