@@ -54,7 +54,7 @@
         "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/firewallinsidensg.json')]"
       },
       {
-        "name": "activedirectory",
+        "name": "logicmonitor",
         "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/logicmonitor.json')]"
       },
       {
