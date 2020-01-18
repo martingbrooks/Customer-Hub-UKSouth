@@ -63,7 +63,7 @@
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/jmpserver.json')]"
     },
     {
-      "name": "tpa1"
+      "name": "tpa1",
       "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa1.json')]"
     },
     {
