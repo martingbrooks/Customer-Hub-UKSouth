@@ -22,6 +22,8 @@
   "variables": {
     "templateLocation": "https://raw.githubusercontent.com/martingbrooks/Customer1-UKSouth/master/",
     "resourceGroupTemplate": "[concat(variables('templateLocation'),'Create-Customer-Resource-Groups.json')]",
+    "publicIpTemplate": "[concat(variables('templateLocation'),'Create-Public-IPs.json')]",
+    "storageAccountTemplate": "[concat(variables('templateLocation'),'Create-Storage-Account.json')]",
     "routeTableTemplates": [
       {
         "name": "tpa1",
@@ -96,7 +98,7 @@
     ],
     "vnetTemplate": "[concat(variables('templateLocation'),'vnet.json')]",
     "firewallTemplate": "[concat(variables('templateLocation'),'pfsensetemplate.json')]"
-    },  
+  },  
   "resources": [
   {
     "apiVersion": "2018-05-01",
