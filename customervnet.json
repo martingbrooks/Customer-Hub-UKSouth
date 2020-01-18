@@ -23,57 +23,39 @@
       "vnetName":  "[concat('vnet-',parameters('topLevelAggregator'),'-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "ipSubnets": [
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.0/28')]",
+          "name": "[concat('snet-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.0/26')]",
           "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
         },
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-activedirectory-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.64/28')]",
+          "name": "[concat('snet-',parameters('topLevelAggregator'),'-tpa1-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.64/28')]",
           "routeTableId":  "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-activedirectory-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId":  "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-activedirectory-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
          
         },
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-monitorautomation-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.80/28')]",
+          "name": "[concat('snet-',parameters('topLevelAggregator'),'-tpa2-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.80/28')]",
           "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-monitorautomation-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-monitorautomation-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
         },
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-services-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.96/28')]",
+          "name": "[concat('snet-',parameters('topLevelAggregator'),'-tpa3-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.96/28')]",
           "routeTableId":  "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-services-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId":  "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-services-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"  
         },
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-rdssession-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.112/28')]",
-          "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-rdssession-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
-          "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-rdssession-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
-        },
-        {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-rdsgateway-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.128/28')]",
-          "routeTableId":  "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-rdsgateway-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
-          "networkSecurityGroupId":  "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-rdsgateway-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"  
-        },
-        {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-rdsbroker-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.144/28')]",
-          "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-rdsbroker-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
-          "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-rdsbroker-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
-        },
-        {
           "name": "[concat('snet-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.240/29')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.112/29')]",
           "routeTableId":  "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId":  "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-firewalloutside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"  
         },
         {
           "name": "[concat('snet-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('212.97.',parameters('thirdOctectNumber'),'.248/29')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.120/29')]",
           "routeTableId":  "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId":  "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-firewalltransit-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"  
         }
@@ -88,7 +70,7 @@
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[concat('212.97.',parameters('thirdOctectNumber'),'.0/24')]"
+                        "[concat('10.64.',parameters('thirdOctectNumber'),'.0/24')]"
                     ]
                 },
                "copy": [
