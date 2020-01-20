@@ -30,7 +30,7 @@
         },
         {
           "name": "[concat('snet-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.8/27')]",
+          "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.8/28')]",
           "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
         },
