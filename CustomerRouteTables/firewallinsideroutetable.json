@@ -35,7 +35,7 @@
         },
         {
           "addressPrefix": "100.64.13.8/27",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-firewallinside-subnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-monitor-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
