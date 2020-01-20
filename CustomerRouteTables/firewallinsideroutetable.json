@@ -28,13 +28,19 @@
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
         {
-          "addressPrefix": "100.64.13.8/27",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-monitor-subnet')]",
+          "addressPrefix": "100.64.13.0/29",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-firewallinside-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
         {
-          "addressPrefix": "10.97.13.64/28",
+          "addressPrefix": "100.64.13.8/27",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-firewallinside-subnet')]",
+          "nextHopType": "VirtualAppliance",
+          "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
+        },
+        {
+          "addressPrefix": "100.97.13.64/28",
           "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA1-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
