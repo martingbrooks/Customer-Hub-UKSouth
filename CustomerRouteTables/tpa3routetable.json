@@ -25,13 +25,13 @@
             "addressPrefix": "0.0.0.0/0",
             "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-default')]",
             "nextHopType": "VirtualAppliance",
-            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.4')]"
+            "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
             },
             {
             "addressPrefix": "100.64.0.0/10",
             "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-customer')]",
             "nextHopType": "VirtualAppliance",
-            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.4')]"
+            "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.100')]"
             }    
         ]
     },	

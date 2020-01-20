@@ -22,7 +22,7 @@
     "variables": {
       "destinationRoutes": [ 
             {
-            "addressPrefix": "212.97.0.0/24",
+            "addressPrefix": "100.64.13.0/24",
             "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-controlhub')]",
             "nextHopType": "VirtualAppliance",
             "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"

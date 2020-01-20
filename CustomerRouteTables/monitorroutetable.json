@@ -25,7 +25,7 @@
             "addressPrefix": "0.0.0.0/0",
             "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-default')]",
             "nextHopType": "VirtualAppliance",
-            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.4')]"
+            "nextHopIpAddress": "[concat('212.97.',parameters('thirdOctectNumber'),'.12')]"
             },
             {
             "addressPrefix": "100.64.0.0/10",
