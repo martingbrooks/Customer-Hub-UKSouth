@@ -24,6 +24,10 @@
     "resourceGroupTemplate": "[concat(variables('templateLocation'),'Create-Customer-Resource-Groups.json')]",
     "routeTableTemplates": [
       {
+        "name": "monitor",
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/monitorroutetable.json')]"
+      },
+      {
         "name": "tpa1",
         "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/tpa1routetable.json')]"
       },
