@@ -40,10 +40,6 @@
         "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/tpa3routetable.json')]"
       },
       {
-        "name": "firewallinside",
-        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewallinsideroutetable.json')]"
-      },
-      {
         "name": "firewalloutside",
         "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewalloutsideroutetable.json')]"
       },
