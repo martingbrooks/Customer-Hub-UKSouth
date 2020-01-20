@@ -94,7 +94,7 @@
         "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/pfnictransitnsg.json')]"
       }
     ],
-    "vnetTemplate": "[concat(variables('templateLocation'),'vnet.json')]",
+    "vnetTemplate": "[concat(variables('templateLocation'),'customervnet.json')]",
     "firewallTemplate": "[concat(variables('templateLocation'),'pfsensetemplate.json')]",
     "storageAccountTemplate": "[concat(variables('templateLocation'),'Create-Customer-Storage-Account.json')]"
   },
