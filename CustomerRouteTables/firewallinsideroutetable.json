@@ -57,7 +57,7 @@
         {
             "type": "Microsoft.Network/routeTables",
             "apiVersion": "2019-04-01",
-            "name": "[concat('route-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+            "name": "[concat('route-',parameters('topLevelAggregator'),'-firewallinsideroutetable-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
             "location": "[parameters('resourceLocation')]",
             "properties": {
                 "copy": [
