@@ -180,6 +180,37 @@
           }
         }
       }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "name": "[concat('vnetDeployment',parameters('resourceLocation'))]",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "nsgTemplatesCopy",
+        "templatesCopy"
+      ],
+      "resourceGroup": "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('vnetTemplate')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "resourceLocation": {
+            "value": "[parameters('resourceLocation')]"
+          },
+          "topLevelAggregator": {
+            "value": "[parameters('topLevelAggregator')]"
+          },
+          "environment": {
+            "value": "[parameters('environment')]"
+          },
+          "thirdOctectNumber": {
+            "value": "[parameters('thirdOctectNumber')]"
+          }
+        }
+      }
     }
   ]
 }
