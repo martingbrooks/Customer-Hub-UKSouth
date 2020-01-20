@@ -52,6 +52,52 @@
         "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewalltransitroutetable.json')]"
       }
     ],
+    "securityGroupTemplates": [
+      {
+        "name": "firewallinside",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/firewallinsidensg.json')]"
+      },
+      {
+        "name": "logicmonitor",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/logicmonitornsg.json')]"
+      },
+      {
+        "name": "jmpserver",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/jmpservernsg.json')]"
+      },
+      {
+        "name": "tpa1",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa1nsg.json')]"
+      },
+      {
+        "name": "tpa2",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa2nsg.json')]"
+      },
+      {
+        "name": "tpa3",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/tpa3nsg.json')]"
+      },
+      {
+        "name": "firewalloutside",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/firewalloutsidensg.json')]"
+      },
+      {
+        "name": "firewalltransit",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/firewalltransitnsg.json')]"
+      },
+      {
+        "name": "pfnicoutside",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/pfnicoutsidensg.json')]"
+      },
+      {
+        "name": "pfnicinside",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/pfnicinsidensg.json')]"
+      },
+      {
+        "name": "pfnictransit",
+        "templateUrl": "[concat(variables('templateLocation'),'networkSecurityGroupsv2/pfnictransitnsg.json')]"
+      }
+    ],
     "vnetTemplate": "[concat(variables('templateLocation'),'vnet.json')]",
     "firewallTemplate": "[concat(variables('templateLocation'),'pfsensetemplate.json')]",
     "storageAccountTemplate": "[concat(variables('templateLocation'),'Create-Customer-Storage-Account.json')]"
@@ -95,6 +141,35 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(variables('routeTableTemplates')[copyIndex()].templateUrl)]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "resourceLocation": {
+            "value": "[parameters('resourceLocation')]"
+          },
+          "topLevelAggregator": {
+            "value": "[parameters('topLevelAggregator')]"
+          },
+          "environment": {
+            "value": "[parameters('environment')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "name": "[concat('networkSecurityGroupsDeployment',variables('securityGroupTemplates')[copyIndex()].name)]",
+      "type": "Microsoft.Resources/deployments",
+      "resourceGroup": "[concat('rg-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "dependsOn": [ "[concat('resourceGroupDeployment',parameters('resourceLocation'))]" ],
+      "copy": {
+        "name": "nsgTemplatesCopy",
+        "count": "[length(variables('securityGroupTemplates'))]"
+      },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('securityGroupTemplates')[copyIndex()].templateUrl)]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
