@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CustomerRouteTables"
+    "\\networkSecurityGroupsv2"
   ],
-  "SelectedNode": "\\CustomerRouteTables\\firewallinsideroutetable.json",
+  "SelectedNode": "\\networkSecurityGroupsv2\\firewallinsidensg.json",
   "PreviewInSolutionExplorer": false
 }

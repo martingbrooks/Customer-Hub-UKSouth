@@ -22,7 +22,6 @@
   "variables": {
     "templateLocation": "https://raw.githubusercontent.com/martingbrooks/Customer1-UKSouth/master/",
     "resourceGroupTemplate": "[concat(variables('templateLocation'),'Create-Customer-Resource-Groups.json')]",
-    "storageAccountTemplate": "[concat(variables('templateLocation'),'Create-Customer-Storage-Account.json')]",
     "routeTableTemplates": [
       {
         "name": "tpa1",
@@ -96,7 +95,8 @@
       }
     ],
     "vnetTemplate": "[concat(variables('templateLocation'),'vnet.json')]",
-    "firewallTemplate": "[concat(variables('templateLocation'),'pfsensetemplate.json')]"
+    "firewallTemplate": "[concat(variables('templateLocation'),'pfsensetemplate.json')]",
+    "storageAccountTemplate": "[concat(variables('templateLocation'),'Create-Customer-Storage-Account.json')]"
   },  
   "resources": [
   {
