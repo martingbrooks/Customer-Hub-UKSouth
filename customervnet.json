@@ -23,7 +23,7 @@
       "vnetName":  "[concat('vnet-',parameters('topLevelAggregator'),'-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "ipSubnets": [
         {
-          "name": "[concat('snet-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+          "name": "[concat('snet-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
           "addressPrefix": "[concat('10.64.',parameters('thirdOctectNumber'),'.8/29')]",
           "routeTableId": "[resourceId('Microsoft.Network/routeTables/',concat('route-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]",
           "networkSecurityGroupId": "[resourceId('Microsoft.Network/networkSecurityGroups',concat('nsg-',parameters('topLevelAggregator'),'-firewallinside-',parameters('environment'),'-',parameters('resourceLocation'),'-001'))]"
