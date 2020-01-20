@@ -41,7 +41,7 @@
         },
         {
           "addressPrefix": "100.64.64.80/28",
-          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA3-subnet')]",
+          "name": "[concat(parameters('topLevelAggregator'),'-',parameters('resourceLocation'),'-to-TPA2-subnet')]",
           "nextHopType": "VirtualAppliance",
           "nextHopIpAddress": "[concat('100.64.',parameters('thirdOctectNumber'),'.4')]"
         },
