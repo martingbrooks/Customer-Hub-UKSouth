@@ -24,6 +24,10 @@
     "resourceGroupTemplate": "[concat(variables('templateLocation'),'Create-Customer-Resource-Groups.json')]",
     "routeTableTemplates": [
       {
+        "name": "firewallinside",
+        "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/firewallinsideroutetable.json')]"
+      },
+      {
         "name": "monitor",
         "templateUrl": "[concat(variables('templateLocation'),'CustomerRouteTables/monitorroutetable.json')]"
       },
