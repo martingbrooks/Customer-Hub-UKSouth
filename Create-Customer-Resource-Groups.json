@@ -24,7 +24,8 @@
       "[concat('rg-',parameters('topLevelAggregator'),'-monitor-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-thirdparty-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
       "[concat('rg-',parameters('topLevelAggregator'),'-firewall-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
-      "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]"
+      "[concat('rg-',parameters('topLevelAggregator'),'-network-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]",
+      "[concat('rg-',parameters('topLevelAggregator'),'-storage-',parameters('environment'),'-',parameters('resourceLocation'),'-001')]"
     ]
   },
   "resources": [
